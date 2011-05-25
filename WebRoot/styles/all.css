@@ -1,0 +1,211 @@
+/*common*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+/*listTable*/
+.listTable {
+	border-collapse: collapse;
+	width: 98%;
+	border: 1px solid #cccccc;
+}
+
+.listTable tbody tr th {
+	border: 1px solid #000000;
+	height: 26px;
+	background: url(../images/tab_14.gif) repeat-x;
+}
+
+.listTable tbody tr td {
+	text-align: center;
+}
+
+.listTable tbody tr td img {
+	margin-left: 3px;
+}
+
+.listTable tbody tr.trSelected td {
+	background-color: blue;
+	color: #E9EEE8;
+	cursor: pointer;
+}
+
+.listTable tbody tr.trSelected td.black {
+	background: #DEDCDD;
+	color: #333;
+	border: 1px solid #000;
+}
+
+.listTable tbody tr.trMouseMove td {
+	background-color: #7FA685;
+	color: #E9EEE8;
+	cursor: pointer;
+}
+
+.listTable tbody tr.trMouseMove td.black {
+	background: #DEDCDD;
+	color: #333;
+	border: 1px solid #000;
+}
+
+.listTable tbody tr.trFirst td {
+	background-color: #ffffff;
+}
+
+.listTable tbody tr.trFirst_new td {
+	background-color: #ffffff;
+	text-align: center;
+	color: #930000;
+}
+
+.listTable tbody tr.trFirst td.black {
+	background: #ffffff;
+	color: #333;
+	border: 1px solid #000;
+}
+
+.listTable tbody tr.trSecond td {
+	background-color: #E7F4FE;
+}
+
+.listTable tbody tr.trSecond td.black {
+	background: #E7F4FE;
+	color: #333;
+	border: 1px solid #000;
+}
+
+.listTable tbody tr.trFirst_new td.black {
+	background: #E7F4FE;
+	color: #333;
+	border: 1px solid #000;
+}
+
+.listTable tbody tr.trSecond_new td {
+	background-color: #C8D8E5;
+	text-align: center;
+	color: #930000;
+}
+
+.listTable tbody tr.trSecond_new td.black {
+	background: #E7F4FE;
+	color: #333;
+	border: 1px solid #000;
+}
+
+/*超链接样式*/
+a:link {
+	font-size: 12px;
+	text-decoration: none;
+	color: #06527d;
+}
+
+a:visited {
+	font-size: 12px;
+	text-decoration: none;
+	color: #06527d;
+}
+
+a:hover {
+	font-size: 12px;
+	text-decoration: underline;
+	color: #FF0000;
+}
+
+a.v1:link {
+	font-size: 12px;
+	text-decoration: none;
+	color: #000000;
+}
+
+a.v1:visited {
+	font-size: 12px;
+	text-decoration: none;
+	color: #000000;
+}
+
+a.v1:hover {
+	font-size: 12px;
+	text-decoration: underline;
+	color: #FF0000;
+}
+
+.star {
+	color: red;
+}
+
+fieldset {
+	width: 99%;
+	margin-left: 4px;
+}
+
+.region {
+	margin-top: 20px;
+}
+
+.region table tr td p.regionTop {
+	font-weight: bold;
+	color: #484848;
+	padding: 9px 0 0 20px;
+}
+
+.region table tr td table.regionTittle img {
+	margin-right: 5px;
+}
+
+.region table tr td table.regionTittle a {
+	color: #1C6B10;
+}
+
+.region table tr td div.regionBody {
+	margin-left: 15px;
+	width: 160px;
+	height: 410px;
+	overflow: auto;
+}
+
+.centerTable {
+	margin: 0 auto;
+	text-align: left;
+	line-height: 30px;
+	margin-top: 10px;
+}
+
+.button {
+	width: 250px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.button ul {
+	list-style-type: none;
+}
+
+.button li {
+	float: left;
+	height: 50px;
+}
+
+.button li a {
+	color: #000;
+	display: block;
+	width: 84px;
+	margin: 0 20px;
+	line-height: 22px;
+	text-align: center;
+	background: url(../images/main_08.gif);
+}
+
+.button li a:hover {
+	background: url(../ images/ main_08.gif;
+	background-position: 0px -22px;
+	color: #4F3807;
+}
