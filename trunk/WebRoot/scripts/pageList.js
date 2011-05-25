@@ -1,17 +1,13 @@
 /**
  * 分页处理脚本：为异步方式提供方便的分页处理
- * @author 程志伟
- * @version 2.1.0
- * 分页类
- * @param name      声明的变量名称
- * @param className CSS样式
- * @param linage    行数(缺省为10)
- */
-/**
+ * @author 程志伟、cxb
  * 增加表格标题栏冻结
  * 增加按某字段查询排序功能
  * 增加当前显示的表格排序
  * 2011-02-28
+ * @param name      声明的变量名称
+ * @param className CSS样式
+ * @param linage    行数(缺省为10)
  */
 var pars;
 function PageList(name,linage,className) {
