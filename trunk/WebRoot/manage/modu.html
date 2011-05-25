@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="../styles/all.css" />
+		<title>模块管理</title>
+	</head>
+	<body>
+		<div>
+			<input type="button" value="增加模块" onclick="goAdd();" />
+		</div>
+		<div id="addOrUpdate" align="center" style="display:none;">
+			<form id="formId" action="">
+			<fieldset><legend>基本信息</legend>
+				<table border="0" width="80%">
+					<tr style="display:none;">
+						<td width="20%" align="right">id</td>
+						<td width="40%" align="left"><input type="hidden" id="ids" style="width:200px;" /></td>
+						<td width="40%"><span id="idSpan">&nbsp;</span></td>
+					</tr>
+					<tr>
+						<td width="20%" align="right">模块名</td>
+						<td width="40%" align="left"><input type="text" id="name" style="width:200px;" onblur="checkName();" /></td>
+						<td width="40%"><span id="nameSpan">&nbsp;</span></td>
+					</tr>
+					<tr>
+						<td align="right">地址</td>
+						<td align="left"><input type="text" id="url" style="width:200px;" /></td>
+						<td><span id="urlSpan">&nbsp;</span></td>
+					</tr>
+					<tr>
+						<td align="right">备注</td>
+						<td align="left"><textarea style="width:200px;" id="description" ></textarea></td>
+						<td><span id="descriptionSpan">&nbsp;</span></td>
+					</tr>
+				</table>
+				</fieldset>
+				
+				<div>&nbsp;</div>
+				
+				<fieldset><legend>权限管理</legend>
+				<table border="0" width="60%">
+					<tr align="center">
+						<td width="45%">全部权限</td>
+						<td width="10%">&nbsp;</td>
+						<td width="45%">选定权限</td>
+					</tr>
+					<tr align="center">
+						<td rowspan="4">
+							<select id="allAuth" multiple="multiple" 
+								style="width: 150px; height: 200px;">
+							</select>
+						</td>
+						<td>&nbsp;</td>
+						<td rowspan="4">
+							<select id="selectAuth" multiple="multiple" 
+								style="width: 150px; height: 200px;">
+							</select>
+						</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<img style="cursor:pointer;" onclick="addSelect();" 
+								src="../images/icon/plusRole.gif" alt="增加选定权限" />
+						</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<img style="cursor:pointer;" onclick="delSelect();" 
+								src="../images/icon/minusRole.gif" alt="删除选定权限" />
+						</td>
+					</tr>
+					<tr align="center">
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				</fieldset>
+				
+				<div>&nbsp;</div>
+				
+				<table border="0" width="80%">
+					<tr align="center">
+						<td>
+							<input type="button" value="确定" onclick="addOrUpdate();" />
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<input type="button" value="重置" onclick="resetForm();" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="list"></div>
+		<script type="text/javascript" src="../scripts/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="../scripts/utilTools.js"></script>
+		<script type="text/javascript" src="../scripts/pageList.js"></script>
+		<script type="text/javascript" src="../dwr/engine.js"></script>
+		<script type="text/javascript" src="../dwr/util.js"></script>
+		<script type="text/javascript" src="../dwr/interface/ModuWeb.js"></script>
+		<script type="text/javascript" src="../dwr/interface/AuthWeb.js"></script>
+		<script type="text/javascript" src="script/modu.js"></script>
+	</body>
+</html>

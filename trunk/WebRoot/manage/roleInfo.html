@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="../styles/all.css" />
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="30">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="15" height="30"><img src="../images/tab_03.gif" width="15" height="30" /></td>
+				<td background="../images/tab_05.gif">角色管理-添加角色信息</td>
+				<td width="14"><img src="../images/tab_07.gif" width="14" height="30" /></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+		<form id="baseForm">
+		<fieldset><legend> 基本信息 </legend>
+		<table border="0" cellpadding="0" cellspacing="0" class="centerTable">
+			<tr>
+				<td align="right">名称：</td>
+				<td width="73%"><input id="roleName" name="roleName" type="text" size="15" /> <span class="star">*</span></td>
+			</tr>
+			<tr>
+				<td width="27%" align="right">描述：</td>
+				<td><textarea id="roleDesc" name="roleDesc" style="width: 200px; height: 60px;"></textarea> &nbsp; <span class="star">*</span>
+				</td>
+			</tr>
+		</table>
+		</fieldset>
+		<fieldset><legend> 权限管理 </legend>
+		<table border="0" cellpadding="0" cellspacing="0" class="centerTable">
+			<tr>
+				<td width="41%" rowspan="4" align="right"><select id="currentAuth" multiple="multiple"
+					style="width: 150px; height: 150px;"></select></td>
+				<td width="10%" height="50">&nbsp;</td>
+				<td width="49%" rowspan="4"><select id="roleAuth" multiple="multiple" style="width: 150px; height: 150px;"></select>
+				</td>
+			</tr>
+			<tr>
+				<td height="25" align="center"><a style="cursor: pointer" onclick="moveAuth(true)"><img
+					src="../images/icon/plusRole.gif" alt="添加权限" width="16" height="16" border="0" /> </a></td>
+			</tr>
+			<tr>
+				<td height="25" align="center"><a style="cursor: pointer" onclick="moveAuth(false)"><img
+					src="../images/icon/minusRole.gif" alt="删除权限" width="16" height="16" border="0" /> </a></td>
+			</tr>
+			<tr>
+				<td height="50">&nbsp;</td>
+			</tr>
+		</table>
+		</fieldset>
+		<div class="button">
+			<input type="button" onclick="saveRole()" value="确定" />
+			<input type="button" onclick="resetInfo()" value="重置" />
+		</div>
+		</form>
+	</tr>
+</table>
+<script type="text/javascript" src="../dwr/engine.js"></script>
+<script type="text/javascript" src="../dwr/util.js"></script>
+<script type="text/javascript" src="../dwr/interface/RoleWeb.js"></script>
+<script type="text/javascript" src="../dwr/interface/AuthWeb.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="../scripts/utilTools.js"></script>
+<script type="text/javascript" src="script/role.js"></script>
+</body>
+</html>

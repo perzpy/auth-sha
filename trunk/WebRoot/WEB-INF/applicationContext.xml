@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.directwebremoting.org/schema/spring-dwr
+    	   http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+	<!-- Spring Annotation -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.create" />
+
+	<!-- dwr -->
+	<dwr:configuration />
+	<dwr:annotation-scan scanRemoteProxy="true" base-package="com.create" />
+	<dwr:url-mapping />
+	<dwr:controller id="dwrController" debug="true" />
+
+	<!-- dataSource -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>jdbc:oracle:thin:@172.16.1.208:1521:CZCEDB</value>
+		</property>
+		<property name="user">
+			<value>CZCENMSS</value>
+		</property>
+		<property name="password">
+			<value>CZCENMSS</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>10</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>0</value>
+		</property>
+		<property name="checkoutTimeout">
+			<value>3000</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>15</value>
+		</property>
+		<property name="minPoolSize">
+			<value>10</value>
+		</property>
+		<property name="maxStatements">
+			<value>0</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>10</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>120</value>
+		</property>
+		<property name="acquireRetryAttempts">
+			<value>30</value>
+		</property>
+		<property name="acquireRetryDelay">
+			<value>1000</value>
+		</property>
+		<property name="autoCommitOnClose">
+			<value>true</value>
+		</property>
+		<property name="numHelperThreads">
+			<value>10</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+			<value>false</value>
+		</property>
+	</bean>
+
+	<!-- 配置Hibernate的SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="namingStrategy"> <bean class="org.hibernate.cfg.ImprovedNamingStrategy" /> </property> <property name="configurationClass"> 
+			<bean class="org.hibernate.cfg.AnnotationConfiguration" /> </property> -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.create.model</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置HibernateTemplate -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="hibernateDaoSupportExtend" class="com.create.dao.HibernateDaoSupportExtend">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="jdbcDaoSupportExtend" class="com.create.dao.JdbcDaoSupportExtend">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 配置Transaction -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="query*" propagation="NOT_SUPPORTED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="tx1"
+			expression="execution(* com.create.service.impl.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="tx1" order="1" />
+	</aop:config>
+	
+	<!-- 日志拦截器 -->
+	<aop:aspectj-autoproxy />
+	<bean class="com.create.web.log.LogAdvice" />
+	
+	<!-- 权限拦截器 -->
+	<bean id="authentationInterceptor" class="com.create.security.AuthInterceptor"/>
+	
+	<!-- 手工织入 -->
+	<aop:config>
+		<!-- 权限方面 -->
+		<aop:aspect ref="authentationInterceptor">
+			<aop:around pointcut="execution(* com.create.web.rpc.*..*(..))" method="attest"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

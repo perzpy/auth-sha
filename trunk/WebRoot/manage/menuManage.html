@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../styles/all.css" />
+<link type="text/css" rel="stylesheet" href="../styles/xtree.css" />
+<link type="text/css" rel="stylesheet" href="../styles/jquery.autocomplete.css" />
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="30">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="15" height="30"><img src="../images/tab_03.gif" width="15" height="30" /></td>
+				<td background="../images/tab_05.gif">菜单管理</td>
+				<td width="14"><img src="../images/tab_07.gif" width="14" height="30" /></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="padding-left: 4px;">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="region">
+			<tr>
+				<td width="27%" valign="top">
+				<table width="182" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td height="24" background="../images/bg/regionTop.gif">
+						<p class="regionTop">菜单树</p>
+						</td>
+					</tr>
+					<tr>
+						<td height="30" background="../images/bg/regionTittle.gif">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="regionTittle">
+							<tr>
+								<td width="5%">&nbsp;</td>
+								<td width="25%"><a style="cursor: pointer" onclick="menu_showAddPanel()"><img
+									src="../images/icon/regionAdd.gif" alt="添加" border="0" />添加</a></td>
+								<td width="25%"><a style="cursor: pointer" onclick="menu_showEditPanel()"><img
+									src="../images/icon/regionEdit.gif" alt="编辑" border="0" />编辑</a></td>
+								<td width="25%"><a style="cursor: pointer" onclick="menu_deleteMenu()"><img
+									src="../images/icon/regionDel.gif" alt="删除" border="0" />删除</a></td>
+								<td width="10%"><a style="cursor: pointer" onclick="menu_stepmove('UP')"><img
+									src="../images/icon/top.gif" alt="向上" border="0" /> </a></td>
+								<td width="10%"><a style="cursor: pointer" onclick="menu_stepmove('DOWN')"><img
+									src="../images/icon/bottom.gif" alt="向下" border="0" /> </a></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="420" valign="top" background="../images/bg/regionBody.gif">
+						<div class="regionBody" id="treePanel">正在加载数据...</div>
+						</td>
+					</tr>
+					<tr>
+						<td height="5" background="../images/bg/regionBottom.gif"></td>
+					</tr>
+				</table>
+				</td>
+				<td valign="top" id="totalPanel" style="display: none;">
+				<fieldset><legend> 基本信息 </legend>
+				<table border="0" cellpadding="0" cellspacing="0" class="centerTable">
+					<tr>
+						<td width="35%" align="right">菜单名称：</td>
+						<td width="65%"><input id="menuName" name="menuName" type="text" size="15" /> <span class="star">*</span></td>
+					</tr>
+					<tr>
+						<td align="right">模块名称：</td>
+						<td>
+						<input type="text" size="15" id="moduInfo" name="moduInfo" style="width:150px;"/>
+						<span class="star">*</span></td>
+					</tr>
+					<tr>
+						<td align="right">权限：</td>
+						<td id="authBoxesTD"></td>
+					</tr>
+				</table>
+				</fieldset>
+				<div class="button" id="submitPanel">
+				<ul>
+					<li><a id="btSubmit" style="cursor: pointer" onclick="menu_submit()">确定</a></li>
+					<li><a id="btReset" style="cursor: pointer" onclick="menu_reset()">重置</a></li>
+				</ul>
+				</div>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript" src="../dwr/engine.js"></script>
+<script type="text/javascript" src="../dwr/util.js"></script>
+<script type="text/javascript" src="../dwr/interface/MenuWeb.js"></script>
+<script type="text/javascript" src="../dwr/interface/ModuWeb.js"></script>
+<script type="text/javascript" src="../dwr/interface/AuthWeb.js"></script>
+<script type="text/javascript" src="../scripts/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../scripts/utilTools.js"></script>
+<script type="text/javascript" src="../scripts/xtree.js"></script>
+<script type="text/javascript" src="script/menuManage.js"></script>
+</body>
+</html>
