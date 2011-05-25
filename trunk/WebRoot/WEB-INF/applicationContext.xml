@@ -25,16 +25,16 @@
 	<!-- dataSource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass">
-			<value>oracle.jdbc.driver.OracleDriver</value>
+			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:oracle:thin:@172.16.1.208:1521:CZCEDB</value>
+			<value>jdbc:mysql://127.0.0.1:3306/auth</value>
 		</property>
 		<property name="user">
-			<value>CZCENMSS</value>
+			<value>root</value>
 		</property>
 		<property name="password">
-			<value>CZCENMSS</value>
+			<value>root</value>
 		</property>
 		<property name="acquireIncrement">
 			<value>10</value>
